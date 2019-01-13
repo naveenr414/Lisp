@@ -1,8 +1,9 @@
 #include "node.h" 
+#include "operator.h"
 #include <iostream>
 
 Node::Node(int v) : value(v), evaluated(true) { }
-Node::Node(Operator o, Node* op_one, Node* op_two) : evaluated(false), op(o), operand_one(op_one), operand_two(op_two) { }
+Node::Node(Q o, Node* op_one, Node* op_two) : evaluated(false), op(o), operand_one(op_one), operand_two(op_two) { }
 
 void Node::print_value() 
 {
@@ -22,22 +23,9 @@ void Node::evaluate()
     value_one = operand_one->get_value();
     value_two = operand_two->get_value();
     
-    if (op == Operator::ADD)
-    {
-      value = value_one + value_two;
-    }
-    else if (op == Operator::SUBTRACT)
-    {
-      value = value_one - value_two;
-    }
-    else if (op == Operator::MULTIPLY)
-    {
-      value = value_one * value_two;
-    }
-    else if (op == Operator::DIVIDE)
-    {
-      value = value_one / value_two;
-    }
+    int values[] = {value_one,value_two};
+    
+    value = op.run(values);
   }
 }
 

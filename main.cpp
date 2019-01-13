@@ -1,7 +1,8 @@
 #include <iostream>
+#include <string> 
+#include <vector> 
 #include "node.h" 
 #include "parse.h"
-#include "operator.h"
 
 using namespace std;
 
@@ -10,6 +11,7 @@ int main() {
   
   n_three->evaluate();
   n_three->print_value();
+  
     
   return 0;
 }
