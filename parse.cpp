@@ -1,59 +1,29 @@
 #include "node.h"
 #include "parse.h"
-#include <string> 
+#include "operator.h"
+#include "functions.h"
 #include <iostream>
 #include <ctype.h>
-#include "operator.h"
+#include <string> 
 #include <vector>
-
-int add(int a[])
-{ 
-  return a[0]+a[1];
-}
-
-int sub(int a[])
-{
-  return a[0]-a[1];
-}
-
-int mul(int a[])
-{
-  return a[0]*a[1];
-}
-
-int divide(int a[])
-{
-  return a[0]/a[1];
-}
-
-int identity(int a[])
-{
-  return a[0];
-}
-
-Q add_operator(2,add,{"ADD","+"});
-Q sub_operator(2,sub,{"SUB","-"});
-Q mul_operator(2,mul,{"MULTIPLY","*"});
-Q div_operator(2,divide,{"DIVIDE","/"});
-Q identity_operator(1,identity,{});
-
-Q operator_list[] = {add_operator,sub_operator,mul_operator,div_operator};
 
 Q to_operator(std::string s)
 {
-  int num_operators = sizeof(operator_list)/sizeof(operator_list[0]); 
-  for (int i = 0; i < num_operators; i++) 
+  int i = 0;
+  while (operator_list[i] != NULL) 
   {
-    for (int j = 0; j < operator_list[i].num_symbols() ; j++ )
+    for (int j = 0; j < operator_list[i]->num_symbols() ; j++ )
     {
-      if (s == operator_list[i].get_symbol(j))
+      if (s == operator_list[i]->get_symbol(j))
       {
-        return operator_list[i];
+        return *operator_list[i];
       }
     }
+    
+    i++;
   }
   
-  return identity_operator;
+  return *identity_operator;
 }
 
 Node* parse(std::string s) {

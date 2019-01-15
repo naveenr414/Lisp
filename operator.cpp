@@ -3,8 +3,8 @@
 #include <functional>
 #include <vector> 
 
-Q::Q() : num_operands(0) {}
-Q::Q(int n,std::function<int(int[])> f, std::vector<std::string> s) : num_operands(n), func(f), symbols(s) { }
+Q::Q() {}
+Q::Q(std::function<int(int[])> f, std::vector<std::string> s) : func(f), symbols(s) { }
 
 int Q::num_symbols () {
   return Q::symbols.size();
