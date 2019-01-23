@@ -7,7 +7,7 @@
 #include <string> 
 #include <vector>
 
-Q to_operator(std::string s)
+Operator to_operator(std::string s)
 {
   int i = 0;
   while (operator_list[i] != NULL) 
@@ -37,7 +37,7 @@ Node* parse(std::string s) {
     }
     
     while(i++,s[i] != ' ') {}
-    Q op = to_operator(s.substr(1,i-1));
+    Operator op = to_operator(s.substr(1,i-1));
     i++;
     
     std::string string_operands[2];

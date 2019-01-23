@@ -5,15 +5,15 @@
 #include <functional>
 #include <vector>
 
-class Q
+class Operator
 {
   private: 
     std::function<int(int[])> func;
     std::vector<std::string> symbols;
     
   public:
-    Q();
-    Q(std::function<int(int[])> f, std::vector<std::string> s); 
+    Operator();
+    Operator(std::function<int(int[])> f, std::vector<std::string> s); 
     int num_symbols();
     std::string get_symbol(int i);
     int run(int a[]);

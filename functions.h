@@ -6,9 +6,9 @@ int mul(int a[]);
 int divide(int a[]);
 int identity(int a[]);
 
-extern Q* add_operator;
-extern Q* sub_operator;
-extern Q* mul_operator;
-extern Q* div_operator;
-extern Q* identity_operator;
-extern Q* operator_list[];
+extern Operator* add_operator;
+extern Operator* sub_operator;
+extern Operator* mul_operator;
+extern Operator* div_operator;
+extern Operator* identity_operator;
+extern Operator* operator_list[];

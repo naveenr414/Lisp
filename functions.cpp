@@ -26,10 +26,10 @@ int identity(int a[])
   return a[0];
 }
 
-Q* add_operator = new Q(add,{"ADD","+"});
-Q* sub_operator = new Q(sub,{"SUB","-"});
-Q* mul_operator = new Q(mul,{"MULTIPLY","*"});
-Q* div_operator = new Q(divide,{"DIVIDE","/"});
-Q* identity_operator = new Q(identity,{});
+Operator* add_operator = new Operator(add,{"ADD","+"});
+Operator* sub_operator = new Operator(sub,{"SUB","-"});
+Operator* mul_operator = new Operator(mul,{"MULTIPLY","*"});
+Operator* div_operator = new Operator(divide,{"DIVIDE","/"});
+Operator* identity_operator = new Operator(identity,{});
 
-Q* operator_list[] = {add_operator,sub_operator,mul_operator,div_operator,identity_operator,NULL};
+Operator* operator_list[] = {add_operator,sub_operator,mul_operator,div_operator,identity_operator,NULL};

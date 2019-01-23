@@ -6,6 +6,6 @@
 #include <string> 
 
 Node* parse(std::string s); 
-Q to_operator(std::string s);
+Operator to_operator(std::string s);
   
 #endif

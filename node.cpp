@@ -3,7 +3,7 @@
 #include <iostream>
 
 Node::Node(int v) : value(v), evaluated(true) { }
-Node::Node(Q o, Node* op_one, Node* op_two) : evaluated(false), op(o), operand_one(op_one), operand_two(op_two) { }
+Node::Node(Operator o, Node* op_one, Node* op_two) : evaluated(false), op(o), operand_one(op_one), operand_two(op_two) { }
 
 void Node::print_value() 
 {
