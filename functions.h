@@ -1,10 +1,11 @@
 #include "operator.h"
+#include <vector> 
 
-int add(int a[]);
-int sub(int a[]);
-int mul(int a[]);
-int divide(int a[]);
-int identity(int a[]);
+int add(std::vector<int> a);
+int sub(std::vector<int> a);
+int mul(std::vector<int> a);
+int divide(std::vector<int> a);
+int identity(std::vector<int> a);
 
 extern Operator* add_operator;
 extern Operator* sub_operator;

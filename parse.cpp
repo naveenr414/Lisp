@@ -9,6 +9,10 @@
 
 Operator to_operator(std::string s)
 {
+  /* Identify what operator matches with a string 
+     For example, + -> add 
+  */ 
+  
   int i = 0;
   while (operator_list[i] != NULL) 
   {
@@ -29,26 +33,24 @@ Operator to_operator(std::string s)
 Node* parse(std::string s) {
   int i = 0;
   
-  // Expression
-  if (s[i] == '(') 
-  {
-    if (s[1] == ' ') {
-      i++;
-    }
-    
+  
+  // String is an expression 
+  if (s[0] == '(') 
+  {    
+    // Parse the operator till white space 
     while(i++,s[i] != ' ') {}
     Operator op = to_operator(s.substr(1,i-1));
     i++;
     
-    std::string string_operands[2];
+    std::vector<std::string> string_operands;
     
-    for (int j = 0; j<2; j++ ) 
+    while(s.at(i) != ')') 
     {
       int start = i;
       
       if (s[i] != '(') 
       {
-         while (i++,s[i] != ' ') {}
+         while (i++,s[i] != ' ' && s[i] != ')') {}
       }
       else 
       {
@@ -70,15 +72,19 @@ Node* parse(std::string s) {
          i++;
       }
             
-      string_operands[j] = s.substr(start,i-start);
-      while (i++,s[i] == ' ') {}
+      string_operands.push_back(s.substr(start,i-start));
+      while (s[i] == ' ') {i++;}
     }
-    
-            
-    Node* operand_one = parse(string_operands[0]);
-    Node* operand_two = parse(string_operands[1]);
         
-    Node* ret = new Node(op,operand_one,operand_two);    
+    std::vector<Node*> operands;
+    operands.reserve(string_operands.size());
+    
+    for(int j = 0; j < string_operands.size(); j++) 
+    {
+      operands.push_back(parse(string_operands.at(j)));
+    }
+                        
+    Node* ret = new Node(op,operands);    
         
     return ret;
   }

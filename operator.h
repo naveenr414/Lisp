@@ -8,15 +8,15 @@
 class Operator
 {
   private: 
-    std::function<int(int[])> func;
+    std::function<int(std::vector<int>)> func;
     std::vector<std::string> symbols;
     
   public:
     Operator();
-    Operator(std::function<int(int[])> f, std::vector<std::string> s); 
+    Operator(std::function<int(std::vector<int>)> f, std::vector<std::string> s); 
     int num_symbols();
     std::string get_symbol(int i);
-    int run(int a[]);
+    int run(std::vector<int>);
 };
 
 #endif

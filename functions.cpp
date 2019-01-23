@@ -1,29 +1,49 @@
 #include "functions.h"
 #include "operator.h"
 
-int add(int a[])
+int add(std::vector<int> a)
 { 
-  return a[0]+a[1];
+  int res = 0;
+  for (int i = 0;i<a.size() ; i++)
+  {
+    res+=a.at(i);
+  }
+  return res;
 }
 
-int sub(int a[])
+int sub(std::vector<int> a)
 {
-  return a[0]-a[1];
+  int res = a.at(0);
+  for (int i = 1;i<a.size() ; i++)
+  {
+    res-=a.at(i);
+  }
+  return res;
 }
 
-int mul(int a[])
+int mul(std::vector<int> a)
 {
-  return a[0]*a[1];
+  int res = 1;
+  for (int i = 0;i<a.size() ; i++)
+  {
+    res*=a.at(i);
+  }
+  return res;
 }
 
-int divide(int a[])
+int divide(std::vector<int> a)
 {
-  return a[0]/a[1];
+  int res = a.at(0);
+  for (int i = 1;i<a.size() ; i++)
+  {
+    res/=a.at(i);
+  }
+  return res;
 }
 
-int identity(int a[])
+int identity(std::vector<int> a)
 {
-  return a[0];
+  return a.at(0);
 }
 
 Operator* add_operator = new Operator(add,{"ADD","+"});

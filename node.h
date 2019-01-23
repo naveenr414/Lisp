@@ -2,12 +2,13 @@
 #define NODE_H
 
 #include "operator.h"
+#include <vector> 
 
 class Node
 {
   public:
     Node(int v);
-    Node(Operator o, Node* op_one, Node* op_two);
+    Node(Operator o, std::vector<Node*> oper);
     void print_value();
     void evaluate();
     int get_value();
@@ -15,8 +16,7 @@ class Node
     int value;
     bool evaluated;
     Operator op;
-    Node* operand_one;
-    Node* operand_two;
+    std::vector<Node*> operands;
 };
 
 #endif

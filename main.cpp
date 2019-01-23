@@ -7,7 +7,7 @@
 using namespace std;
 
 int main() {
-  Node* n_three = parse("(+ 5 (- 3 (/ 8 7)))");
+  Node* n_three = parse("(+ 3 3 3)");
   
   n_three->evaluate();
   n_three->print_value();

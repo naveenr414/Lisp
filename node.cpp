@@ -1,9 +1,10 @@
 #include "node.h" 
 #include "operator.h"
 #include <iostream>
+#include <vector> 
 
 Node::Node(int v) : value(v), evaluated(true) { }
-Node::Node(Operator o, Node* op_one, Node* op_two) : evaluated(false), op(o), operand_one(op_one), operand_two(op_two) { }
+Node::Node(Operator o,std::vector<Node*> oper) : evaluated(false), op(o), operands(oper) { }
 
 void Node::print_value() 
 {
@@ -12,19 +13,17 @@ void Node::print_value()
 
 void Node::evaluate() 
 {
-  int value_one;
-  int value_two;
-  
   if (!evaluated) 
   {
-    operand_one->evaluate();
-    operand_two->evaluate();
+    std::vector<int> values; 
+    values.reserve(operands.size());
     
-    value_one = operand_one->get_value();
-    value_two = operand_two->get_value();
-    
-    int values[] = {value_one,value_two};
-    
+    for (int i = 0; i < operands.size(); i++) 
+    {
+      operands.at(i)->evaluate();
+      values.push_back(operands.at(i)->get_value());
+    }
+        
     value = op.run(values);
   }
 }
