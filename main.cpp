@@ -1,17 +1,12 @@
 #include <iostream>
 #include <string> 
 #include <vector> 
-#include "node.h" 
-#include "parse.h"
+#include "repl.h"
 
 using namespace std;
 
-int main() {
-  Node* n_three = parse("(+ 3 3 3)");
-  
-  n_three->evaluate();
-  n_three->print_value();
-  
-    
+int main() 
+{
+  run_repl();
   return 0;
 }

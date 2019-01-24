@@ -33,7 +33,6 @@ Operator to_operator(std::string s)
 Node* parse(std::string s) {
   int i = 0;
   
-  
   // String is an expression 
   if (s[0] == '(') 
   {    
