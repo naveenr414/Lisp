@@ -3,9 +3,13 @@
 #include "node.h"
 #include <string> 
 #include "parse.h"
+#include "environment.h"
 
 void run_repl()
 {
+  Environment e;
+  e.add("x",5);
+  
   while (true)
   {
     std::string inp; 
@@ -14,7 +18,7 @@ void run_repl()
     
     Node* n = parse(inp);
   
-    n->evaluate();
+    n->evaluate(&e);
     n->print_value();
   }
 }

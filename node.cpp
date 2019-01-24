@@ -2,33 +2,39 @@
 #include "operator.h"
 #include <iostream>
 #include <vector> 
+#include <string> 
+#include "environment.h"
 
-Node::Node(int v) : value(v), evaluated(true) { }
-Node::Node(Operator o,std::vector<Node*> oper) : evaluated(false), op(o), operands(oper) { }
+Node::Node(int v) : value(v), evaluated(true), is_token(false) { }
+Node::Node(std::string t) : value(0), evaluated(false), is_token(true),token(t) {}
+Node::Node(Operator o,std::vector<Node*> oper) : evaluated(false), op(o), operands(oper), is_token(false) { }
 
 void Node::print_value() 
 {
   std::cout << value << "\n";
 }
 
-void Node::evaluate() 
+void Node::evaluate(Environment* e) 
 {
   if (!evaluated) 
-  {
-    std::vector<int> values; 
-    values.reserve(operands.size());
-    
-    for (int i = 0; i < operands.size(); i++) 
+  {  
+    if(is_token)
     {
-      operands.at(i)->evaluate();
-      values.push_back(operands.at(i)->get_value());
+      value = e->lookup(token);
     }
-        
-    value = op.run(values);
+    else 
+    {
+      value = op.run(operands,e);
+    }
   }
 }
 
 int Node::get_value() 
 { 
   return value;
+}
+
+std::string Node::get_token()
+{
+  return token;
 }

@@ -89,13 +89,19 @@ Node* parse(std::string s) {
   }
   else
   {
-    while(i++, isdigit(s[i])){}
-    
-    Node* ret = new Node(std::stoi(s.substr(0,i),nullptr));
-    
-    return ret;
-  }
-  
-  Node* ret = new Node(0);
-  return ret;
+    while(isdigit(s[i])){i++;}
+        
+    if (i != 0) 
+    {
+      // Number 
+      Node* ret = new Node(std::stoi(s.substr(0,i),nullptr));
+      return ret;
+    }
+    else 
+    {
+      // Token 
+      Node* ret = new Node(s);
+      return ret;
+    }    
+  }  
 }
