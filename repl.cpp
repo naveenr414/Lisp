@@ -10,9 +10,10 @@ void run_repl()
   Environment e;
   e.add("x",5);
   
-  while (true)
+  std::string inp; 
+  
+  while (inp != "quit")
   {
-    std::string inp; 
     std::cout << "> ";
     getline(std::cin, inp);
     
